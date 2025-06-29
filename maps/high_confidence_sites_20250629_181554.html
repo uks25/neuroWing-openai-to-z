@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+        <div style="position: fixed; top: 80px; right: 10px; width: 260px; 
+                    background: linear-gradient(135deg, #ffffff, #f8f9fa); 
+                    border: 3px solid #d4af37; z-index: 9999; 
+                    font-size: 13px; padding: 20px; border-radius: 15px;
+                    box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+        <h3 style="color: #d4af37; margin-top: 0; text-align: center;">🏆 COMPETITION SITES</h3>
+        
+        <div style="margin: 15px 0;">
+            <h4 style="color: #1976d2; margin-bottom: 8px;">Shape Classification:</h4>
+            <p style="margin: 5px 0;"><span style="color: #1f77b4; font-size: 18px;">●</span> <strong>Circular</strong> - Earthworks/Settlements</p>
+            <p style="margin: 5px 0;"><span style="color: #d62728; font-size: 18px;">●</span> <strong>Rectangular</strong> - Structures/Terraces</p>
+            <p style="margin: 5px 0;"><span style="color: #9467bd; font-size: 18px;">●</span> <strong>Mixed</strong> - Complex Geometry</p>
+        </div>
+        
+        <div style="margin: 15px 0; border-top: 2px solid #ddd; padding-top: 10px;">
+            <h4 style="color: #1976d2; margin-bottom: 8px;">Visual Encoding:</h4>
+            <p style="margin: 5px 0;"><strong>🔵 Size:</strong> AI Mask Score</p>
+            <p style="margin: 5px 0;"><strong>🎨 Color:</strong> Shape Geometry</p>
+            <p style="margin: 5px 0;"><strong>🎯 Threshold:</strong> >0.8 Confidence</p>
+        </div>
+        
+        <div style="margin: 15px 0; border-top: 2px solid #ddd; padding-top: 10px;">
+            <h4 style="color: #1976d2; margin-bottom: 8px;">🤖 AI Technology:</h4>
+            <p style="margin: 3px 0; font-size: 12px;"><strong>YOLO:</strong> Object Detection</p>
+            <p style="margin: 3px 0; font-size: 12px;"><strong>SAM:</strong> Precise Segmentation</p>
+            <p style="margin: 3px 0; font-size: 12px;"><strong>ViT:</strong> Classification</p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #e3f2fd, #f3e5f5); padding: 10px; border-radius: 8px; margin-top: 15px; text-align: center;">
+            <p style="margin: 0; font-size: 13px;">
+                <strong>🎯 Sites Found: 7</strong><br>
+                <em>OpenAI to Z Challenge 2024</em>
+            </p>
+        </div>
+        
+        <p style="font-size: 10px; margin-top: 10px; text-align: center; color: #666;">
+            💡 If map doesn't load, try switching layers
+        </p>
+        </div>
+        
+    
+        <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); 
+                    background: linear-gradient(135deg, #ffd700, #ffed4e); 
+                    border: 3px solid #b8860b; z-index: 9999; 
+                    font-size: 18px; padding: 20px 30px; text-align: center; 
+                    border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+                    color: #1a1a1a; font-weight: bold;">
+        <h2 style="margin: 0; color: #1a1a1a;">🏆 HIGH-CONFIDENCE ARCHAEOLOGICAL DISCOVERIES</h2>
+        <p style="margin: 8px 0 0 0; font-size: 16px;">
+            <strong>7 Competition-Ready Sites | AI Confidence > 0.8</strong>
+        </p>
+        <p style="font-size: 14px; margin: 5px 0 0 0;">
+            <strong>NeuroWing AI Discovery System | Session: 20250629_181554</strong>
+        </p>
+        <p style="font-size: 12px; margin: 5px 0 0 0; color: #444;">
+            💡 If map tiles don't load, try switching layers (top-right corner)
+        </p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4 = L.map(
+                "map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4",
+                {
+                    center: [-2.681467181467181, -54.87258687258691],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7e2c4e378f28e358ff69e41a275445e5 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7e2c4e378f28e358ff69e41a275445e5.addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var tile_layer_9f347c49432f30d92cc6ccbfe81d0295 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9f347c49432f30d92cc6ccbfe81d0295.addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var tile_layer_16bd0f8ab40866dcbe2a5d63cb380929 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_16bd0f8ab40866dcbe2a5d63cb380929.addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var tile_layer_fe0f090ae49c58b3bc905214c37cadde = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "Google Satellite",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fe0f090ae49c58b3bc905214c37cadde.addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var circle_marker_fa72f5488abb0daf9d105569021628e1 = L.circleMarker(
+                [-2.716216216216216, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.909161561209968, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_cbe9154a37e9b5f28c2fcba18e99ad61 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_566ec46d0c0d592e5beb5b8ec0fea97f = $(`<div id="html_566ec46d0c0d592e5beb5b8ec0fea97f" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 1</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.842</strong></p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.501</p>                     <p><strong>Rectangularity:</strong> 0.976</p>                     <p><strong>AI Mask Score:</strong> 0.989</p>                     <p><strong>Feature Area:</strong> ~40m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.716216<br>                         <strong>Longitude:</strong> -54.864865                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_cbe9154a37e9b5f28c2fcba18e99ad61.setContent(html_566ec46d0c0d592e5beb5b8ec0fea97f);
+            
+        
+
+        circle_marker_fa72f5488abb0daf9d105569021628e1.bindPopup(popup_cbe9154a37e9b5f28c2fcba18e99ad61)
+        ;
+
+        
+    
+    
+            circle_marker_fa72f5488abb0daf9d105569021628e1.bindTooltip(
+                `<div>
+                     🏆 Competition Site 1 | AI: 0.842
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_73604eba347fb3f8ae9a967c0a280480 = L.circle(
+                [-2.716216216216216, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.716129878781146, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_b40e53b720eedd9a9b23910908648617 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d048fa025091062b000ec6ff232248de = $(`<div id="html_d048fa025091062b000ec6ff232248de" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~40m radius)</div>`)[0];
+                popup_b40e53b720eedd9a9b23910908648617.setContent(html_d048fa025091062b000ec6ff232248de);
+            
+        
+
+        circle_73604eba347fb3f8ae9a967c0a280480.bindPopup(popup_b40e53b720eedd9a9b23910908648617)
+        ;
+
+        
+    
+    
+            var marker_92d9f7f52c06919b662e04ed35f34b26 = L.marker(
+                [-2.714216216216216, -54.8628648648649],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_6412d80699d9a178d815c08cea50cdec = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 1 | 0.842\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_92d9f7f52c06919b662e04ed35f34b26.setIcon(div_icon_6412d80699d9a178d815c08cea50cdec);
+            
+    
+            var circle_marker_8a4837f37b2c68991a14f25dc0409886 = L.circleMarker(
+                [-2.6891891891891886, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.514196730449957, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_4fdd9419d332469f5bcb72be049fc8a1 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_f3c202f18b692d086b5f218c7a544d60 = $(`<div id="html_f3c202f18b692d086b5f218c7a544d60" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 2</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.849</strong></p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.446</p>                     <p><strong>Rectangularity:</strong> 0.848</p>                     <p><strong>AI Mask Score:</strong> 0.939</p>                     <p><strong>Feature Area:</strong> ~38m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.689189<br>                         <strong>Longitude:</strong> -54.891892                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_4fdd9419d332469f5bcb72be049fc8a1.setContent(html_f3c202f18b692d086b5f218c7a544d60);
+            
+        
+
+        circle_marker_8a4837f37b2c68991a14f25dc0409886.bindPopup(popup_4fdd9419d332469f5bcb72be049fc8a1)
+        ;
+
+        
+    
+    
+            circle_marker_8a4837f37b2c68991a14f25dc0409886.bindTooltip(
+                `<div>
+                     🏆 Competition Site 2 | AI: 0.849
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f988301df599e172d07ac423e0ceaf99 = L.circle(
+                [-2.6891891891891886, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 38.48186478265612, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_b0a3752db017f630cbe235a67b98e030 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38d272b2664e565ae3285f8cf8a76c76 = $(`<div id="html_38d272b2664e565ae3285f8cf8a76c76" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~38m radius)</div>`)[0];
+                popup_b0a3752db017f630cbe235a67b98e030.setContent(html_38d272b2664e565ae3285f8cf8a76c76);
+            
+        
+
+        circle_f988301df599e172d07ac423e0ceaf99.bindPopup(popup_b0a3752db017f630cbe235a67b98e030)
+        ;
+
+        
+    
+    
+            var marker_fc7763f6516e231de862e198608e7d3a = L.marker(
+                [-2.687189189189189, -54.88989189189193],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_2fe96a767bd61cc7293e8617e174c915 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 2 | 0.849\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_fc7763f6516e231de862e198608e7d3a.setIcon(div_icon_2fe96a767bd61cc7293e8617e174c915);
+            
+    
+            var circle_marker_652183b5fa6d7a4a7d945f385a68285a = L.circleMarker(
+                [-2.6891891891891886, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.848753397140495, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_ebbffa6fef31f6b60800535f7876a046 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_a88cb83a2e854422f907607b64fddc02 = $(`<div id="html_a88cb83a2e854422f907607b64fddc02" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 3</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.841</strong></p>                 </div>                                  <div style="border-left: 4px solid #9467bd; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.676</p>                     <p><strong>Rectangularity:</strong> 0.832</p>                     <p><strong>AI Mask Score:</strong> 0.981</p>                     <p><strong>Feature Area:</strong> ~40m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.689189<br>                         <strong>Longitude:</strong> -54.864865                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_ebbffa6fef31f6b60800535f7876a046.setContent(html_a88cb83a2e854422f907607b64fddc02);
+            
+        
+
+        circle_marker_652183b5fa6d7a4a7d945f385a68285a.bindPopup(popup_ebbffa6fef31f6b60800535f7876a046)
+        ;
+
+        
+    
+    
+            circle_marker_652183b5fa6d7a4a7d945f385a68285a.bindTooltip(
+                `<div>
+                     🏆 Competition Site 3 | AI: 0.841
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_28a19cb82c57f374d727332ff80ed2a9 = L.circle(
+                [-2.6891891891891886, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.527354366064046, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_c9f1e9df521a5dab2d429fb52f4642a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a3509a84dd0bfe64d26122fead08b795 = $(`<div id="html_a3509a84dd0bfe64d26122fead08b795" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~40m radius)</div>`)[0];
+                popup_c9f1e9df521a5dab2d429fb52f4642a8.setContent(html_a3509a84dd0bfe64d26122fead08b795);
+            
+        
+
+        circle_28a19cb82c57f374d727332ff80ed2a9.bindPopup(popup_c9f1e9df521a5dab2d429fb52f4642a8)
+        ;
+
+        
+    
+    
+            var marker_8d4ee6518c8477999df6eb0a08de5a8c = L.marker(
+                [-2.687189189189189, -54.8628648648649],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_4dc66b00c23249d10abb794a517ff100 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 3 | 0.841\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_8d4ee6518c8477999df6eb0a08de5a8c.setIcon(div_icon_4dc66b00c23249d10abb794a517ff100);
+            
+    
+            var circle_marker_63faeb93694e192d9d5d1e60f54ac1d0 = L.circleMarker(
+                [-2.6891891891891886, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.86990320694658, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_f96a243ded062b640bbb611fb3ec6abf = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_c066ce34f347e63f681a3cce609f0497 = $(`<div id="html_c066ce34f347e63f681a3cce609f0497" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 4</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.830</strong></p>                 </div>                                  <div style="border-left: 4px solid #9467bd; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.656</p>                     <p><strong>Rectangularity:</strong> 0.948</p>                     <p><strong>AI Mask Score:</strong> 0.984</p>                     <p><strong>Feature Area:</strong> ~40m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.689189<br>                         <strong>Longitude:</strong> -54.810811                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_f96a243ded062b640bbb611fb3ec6abf.setContent(html_c066ce34f347e63f681a3cce609f0497);
+            
+        
+
+        circle_marker_63faeb93694e192d9d5d1e60f54ac1d0.bindPopup(popup_f96a243ded062b640bbb611fb3ec6abf)
+        ;
+
+        
+    
+    
+            circle_marker_63faeb93694e192d9d5d1e60f54ac1d0.bindTooltip(
+                `<div>
+                     🏆 Competition Site 4 | AI: 0.830
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_adf8b4e9cd5fe9a26170ac2547fe8c0e = L.circle(
+                [-2.6891891891891886, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.59344752170806, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_bedbdc34d3e1b982c71c85909e83402e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81b15df5cf817e0121964da975d40157 = $(`<div id="html_81b15df5cf817e0121964da975d40157" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~40m radius)</div>`)[0];
+                popup_bedbdc34d3e1b982c71c85909e83402e.setContent(html_81b15df5cf817e0121964da975d40157);
+            
+        
+
+        circle_adf8b4e9cd5fe9a26170ac2547fe8c0e.bindPopup(popup_bedbdc34d3e1b982c71c85909e83402e)
+        ;
+
+        
+    
+    
+            var marker_a79bcee7480aaf714d14e275ff497114 = L.marker(
+                [-2.687189189189189, -54.808810810810854],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_c15bcaf7550c8bb4fe8df407bc32cc81 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 4 | 0.830\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_a79bcee7480aaf714d14e275ff497114.setIcon(div_icon_c15bcaf7550c8bb4fe8df407bc32cc81);
+            
+    
+            var circle_marker_3897ddf1d97062d5f45538d6be8cd1b6 = L.circleMarker(
+                [-2.6621621621621614, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_952617a1b48786fb9f48a39348c10108 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_593bfaf463668d9cec29f96b369bd415 = $(`<div id="html_593bfaf463668d9cec29f96b369bd415" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 5</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.835</strong></p>                 </div>                                  <div style="border-left: 4px solid #9467bd; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.785</p>                     <p><strong>Rectangularity:</strong> 0.991</p>                     <p><strong>AI Mask Score:</strong> 1.000</p>                     <p><strong>Feature Area:</strong> ~40m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.662162<br>                         <strong>Longitude:</strong> -54.918919                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_952617a1b48786fb9f48a39348c10108.setContent(html_593bfaf463668d9cec29f96b369bd415);
+            
+        
+
+        circle_marker_3897ddf1d97062d5f45538d6be8cd1b6.bindPopup(popup_952617a1b48786fb9f48a39348c10108)
+        ;
+
+        
+    
+    
+            circle_marker_3897ddf1d97062d5f45538d6be8cd1b6.bindTooltip(
+                `<div>
+                     🏆 Competition Site 5 | AI: 0.835
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4f45f018cf2e05b81b00b458baf69191 = L.circle(
+                [-2.6621621621621614, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.0, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_9739e52995649b487f4f93600e8ae00d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_de08eb091f137f402619967e65a967c7 = $(`<div id="html_de08eb091f137f402619967e65a967c7" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~40m radius)</div>`)[0];
+                popup_9739e52995649b487f4f93600e8ae00d.setContent(html_de08eb091f137f402619967e65a967c7);
+            
+        
+
+        circle_4f45f018cf2e05b81b00b458baf69191.bindPopup(popup_9739e52995649b487f4f93600e8ae00d)
+        ;
+
+        
+    
+    
+            var marker_63e0669cb4f9e5a05d2b78801e7bed75 = L.marker(
+                [-2.6601621621621616, -54.91691891891895],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_6ca0ee7af0fff7ac1704073b5b02c65f = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 5 | 0.835\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_63e0669cb4f9e5a05d2b78801e7bed75.setIcon(div_icon_6ca0ee7af0fff7ac1704073b5b02c65f);
+            
+    
+            var circle_marker_aba4ed946454ee071e827f6fadeeee6d = L.circleMarker(
+                [-2.6621621621621614, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.729013254786452, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_1bb31e1bea4de176cc3d364f7e918fde = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_b879bf9bcad68011adfa01f8e18c1a0b = $(`<div id="html_b879bf9bcad68011adfa01f8e18c1a0b" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 6</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.808</strong></p>                 </div>                                  <div style="border-left: 4px solid #9467bd; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.694</p>                     <p><strong>Rectangularity:</strong> 0.820</p>                     <p><strong>AI Mask Score:</strong> 0.966</p>                     <p><strong>Feature Area:</strong> ~39m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.662162<br>                         <strong>Longitude:</strong> -54.891892                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_1bb31e1bea4de176cc3d364f7e918fde.setContent(html_b879bf9bcad68011adfa01f8e18c1a0b);
+            
+        
+
+        circle_marker_aba4ed946454ee071e827f6fadeeee6d.bindPopup(popup_1bb31e1bea4de176cc3d364f7e918fde)
+        ;
+
+        
+    
+    
+            circle_marker_aba4ed946454ee071e827f6fadeeee6d.bindTooltip(
+                `<div>
+                     🏆 Competition Site 6 | AI: 0.808
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4a29e79be0aaae9dc81c150e12363e48 = L.circle(
+                [-2.6621621621621614, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.15316642120766, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_0df31d715d6031e81bf6b1071f327381 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c9a3f3846a5a93423d517c33cb211b79 = $(`<div id="html_c9a3f3846a5a93423d517c33cb211b79" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~39m radius)</div>`)[0];
+                popup_0df31d715d6031e81bf6b1071f327381.setContent(html_c9a3f3846a5a93423d517c33cb211b79);
+            
+        
+
+        circle_4a29e79be0aaae9dc81c150e12363e48.bindPopup(popup_0df31d715d6031e81bf6b1071f327381)
+        ;
+
+        
+    
+    
+            var marker_76bef8a28080a8f91d14b39cc575dbf9 = L.marker(
+                [-2.6601621621621616, -54.88989189189193],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_824d32c0428d5dfa61dbe167bbce5e18 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 6 | 0.808\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_76bef8a28080a8f91d14b39cc575dbf9.setIcon(div_icon_824d32c0428d5dfa61dbe167bbce5e18);
+            
+    
+            var circle_marker_ce9a902ed5ca39a0aa6b644f9923ed89 = L.circleMarker(
+                [-2.6621621621621614, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "gold", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.920867501385672, "stroke": true, "weight": 4}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_b229ee195158fbdb37115a95d2786416 = L.popup({
+  "maxWidth": 380,
+});
+
+        
+            
+                var html_76a53167ada8a2831b0cb92a3c925bac = $(`<div id="html_76a53167ada8a2831b0cb92a3c925bac" style="width: 100.0%; height: 100.0%;">             <div style="width: 380px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ High-Confidence Site 7</h3>                 <hr style="border: 2px solid #d4af37;">                                  <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 12px; border-radius: 8px; margin: 10px 0; border: 2px solid #4caf50;">                     <h4 style="margin: 0; color: #2e7d32;">🏆 COMPETITION-READY DISCOVERY</h4>                     <p style="margin: 5px 0; font-size: 16px;"><strong>AI Confidence: 0.846</strong></p>                 </div>                                  <div style="border-left: 4px solid #9467bd; padding-left: 15px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular Structure</p>                     <p><strong>Circularity:</strong> 0.719</p>                     <p><strong>Rectangularity:</strong> 0.859</p>                     <p><strong>AI Mask Score:</strong> 0.990</p>                     <p><strong>Feature Area:</strong> ~40m radius</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #1976d2;">📍 Precise Coordinates</h4>                     <p style="font-family: monospace; font-size: 13px;">                         <strong>Latitude:</strong> -2.662162<br>                         <strong>Longitude:</strong> -54.864865                     </p>                 </div>                                  <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin: 15px 0;">                     <h4 style="margin-top: 0; color: #7b1fa2;">🛰️ AI Detection Technology</h4>                     <p><strong>Models:</strong> YOLO + SAM + Vision Transformers</p>                     <p><strong>Method:</strong> Multi-sensor satellite analysis</p>                     <p><strong>Validation:</strong> Walker methodology aligned</p>                 </div>                                  <div style="background: linear-gradient(135deg, #fff3e0, #ffeaa7); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: center; border: 2px solid #ff9800;">                     <p style="margin: 0; font-size: 14px;">                         <strong>🏆 OpenAI to Z Competition 2024</strong><br>                         <strong>NeuroWing Archaeological Discovery</strong><br>                         <em>Ready for archaeological investigation</em>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_b229ee195158fbdb37115a95d2786416.setContent(html_76a53167ada8a2831b0cb92a3c925bac);
+            
+        
+
+        circle_marker_ce9a902ed5ca39a0aa6b644f9923ed89.bindPopup(popup_b229ee195158fbdb37115a95d2786416)
+        ;
+
+        
+    
+    
+            circle_marker_ce9a902ed5ca39a0aa6b644f9923ed89.bindTooltip(
+                `<div>
+                     🏆 Competition Site 7 | AI: 0.846
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_d9846bcaddd405b7af8a97727fc579d0 = L.circle(
+                [-2.6621621621621614, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#9467bd", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9467bd", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 39.75271094183022, "stroke": true, "weight": 2}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+        var popup_f121ff23f43254b6e6eeafdd632d506f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5ffb39fad923e150bbfb0b6f06f2d876 = $(`<div id="html_5ffb39fad923e150bbfb0b6f06f2d876" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~40m radius)</div>`)[0];
+                popup_f121ff23f43254b6e6eeafdd632d506f.setContent(html_5ffb39fad923e150bbfb0b6f06f2d876);
+            
+        
+
+        circle_d9846bcaddd405b7af8a97727fc579d0.bindPopup(popup_f121ff23f43254b6e6eeafdd632d506f)
+        ;
+
+        
+    
+    
+            var marker_48dfd0fb70c45bef4947fab62f99923c = L.marker(
+                [-2.6601621621621616, -54.8628648648649],
+                {
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+    
+            var div_icon_4ccde3b54a1b7b39cbea3d0544d3946c = L.divIcon({
+  "html": "\n                    \u003cdiv style=\"background: linear-gradient(45deg, #ffd700, #ffed4e); \n                                border: 3px solid #b8860b; border-radius: 8px; \n                                padding: 5px 10px; font-size: 12px; font-weight: bold; \n                                color: #1a1a1a; box-shadow: 0 2px 4px rgba(0,0,0,0.3);\n                                white-space: nowrap;\"\u003e\n                        \ud83c\udfc6 SITE 7 | 0.846\n                    \u003c/div\u003e\n                    ",
+  "iconSize": [140, 30],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_48dfd0fb70c45bef4947fab62f99923c.setIcon(div_icon_4ccde3b54a1b7b39cbea3d0544d3946c);
+            
+    
+            var layer_control_3c6e8bb7a7be87a42884176e7e574384_layers = {
+                base_layers : {
+                    "Street Map" : tile_layer_7e2c4e378f28e358ff69e41a275445e5,
+                    "Clean Map (Recommended)" : tile_layer_9f347c49432f30d92cc6ccbfe81d0295,
+                    "Dark Map" : tile_layer_16bd0f8ab40866dcbe2a5d63cb380929,
+                    "Satellite View" : tile_layer_fe0f090ae49c58b3bc905214c37cadde,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_3c6e8bb7a7be87a42884176e7e574384 = L.control.layers(
+                layer_control_3c6e8bb7a7be87a42884176e7e574384_layers.base_layers,
+                layer_control_3c6e8bb7a7be87a42884176e7e574384_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+
+        
+    
+            var measure_control_9a678d981d22865e98a72c57251169c5 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4.addControl(measure_control_9a678d981d22865e98a72c57251169c5);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_1178f2dc98c23d8f9ca3d8ec0e4fc6c4);
+        
+</script>
+</html>
