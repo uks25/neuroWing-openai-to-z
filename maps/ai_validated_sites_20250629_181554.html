@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c0fee251395f54a342ae15e354fed5ee {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+        <div style="position: fixed; top: 10px; right: 10px; width: 220px; 
+                    background-color: white; border:2px solid grey; z-index:9999; 
+                    font-size:12px; padding: 15px; border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        <h4>🤖 AI-Validated Sites</h4>
+        <p><span style="color: #1f77b4; font-size: 16px;">●</span> Circular Features</p>
+        <p><span style="color: #d62728; font-size: 16px;">●</span> Rectangular Features</p>
+        <hr style="border: 1px solid #ddd;">
+        <p><strong>Size:</strong> AI Confidence</p>
+        <p><strong>Detection:</strong> YOLO + SAM + ViT</p>
+        <p style="font-size: 10px; margin-top: 10px;">💡 Switch layers if map doesn't load</p>
+        </div>
+        
+    
+        <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); 
+                    background-color: rgba(255,255,255,0.95); border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 15px; text-align: center; border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        <h3 style="margin: 0;">🤖 AI-Validated Archaeological Sites</h3>
+        <p style="margin: 5px 0;"><strong>16 Sites | Session: 20250629_181554</strong></p>
+        <p style="font-size: 12px; margin: 0;">💡 If map doesn't load, try switching layers (top-right corner)</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_c0fee251395f54a342ae15e354fed5ee" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c0fee251395f54a342ae15e354fed5ee = L.map(
+                "map_c0fee251395f54a342ae15e354fed5ee",
+                {
+                    center: [-2.6824324324324316, -54.886824324324365],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2856c86d0768ba6394e43aac819e8a03 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2856c86d0768ba6394e43aac819e8a03.addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+            var tile_layer_da05873df0a2ce5736cc6db622e24573 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_da05873df0a2ce5736cc6db622e24573.addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+            var tile_layer_38bde6e36ad265c2e0f024f140b94e3f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_38bde6e36ad265c2e0f024f140b94e3f.addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+            var tile_layer_3504a4d4b1c15e28a5ae346c8ad6b675 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "Google Satellite",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3504a4d4b1c15e28a5ae346c8ad6b675.addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+            var circle_marker_d3ba90a28f74500d5135dbf50c62675d = L.circleMarker(
+                [-2.716216216216216, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.36453777215951, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_c4b40b3050b370556d71c13c71b52cd6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8aa639c1a9a15a881d3dbe75811542fa = $(`<div id="html_8aa639c1a9a15a881d3dbe75811542fa" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 1</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.727</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.549</p>                     <p><strong>Rectangularity:</strong> 0.695</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_c4b40b3050b370556d71c13c71b52cd6.setContent(html_8aa639c1a9a15a881d3dbe75811542fa);
+            
+        
+
+        circle_marker_d3ba90a28f74500d5135dbf50c62675d.bindPopup(popup_c4b40b3050b370556d71c13c71b52cd6)
+        ;
+
+        
+    
+    
+            circle_marker_d3ba90a28f74500d5135dbf50c62675d.bindTooltip(
+                `<div>
+                     AI Site 1 (Conf: 0.727)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_1e94513dd5b424762b6e2dd688fc4c75 = L.circle(
+                [-2.716216216216216, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 29.5484592405317, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_d6ac84135254f7887ca80ab40a4abf35 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8e5d6006452e28288b04f59fbcfa4f74 = $(`<div id="html_8e5d6006452e28288b04f59fbcfa4f74" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_d6ac84135254f7887ca80ab40a4abf35.setContent(html_8e5d6006452e28288b04f59fbcfa4f74);
+            
+        
+
+        circle_1e94513dd5b424762b6e2dd688fc4c75.bindPopup(popup_d6ac84135254f7887ca80ab40a4abf35)
+        ;
+
+        
+    
+    
+            var circle_marker_a41557c4360cddbf8fac40aafaf9ae05 = L.circleMarker(
+                [-2.716216216216216, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.773770141601563, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_26f48c5db4afa549376d383530119728 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_49c32f230b086b42a525364633aa1d2b = $(`<div id="html_49c32f230b086b42a525364633aa1d2b" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 2</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.796</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.785</p>                     <p><strong>Rectangularity:</strong> 0.991</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_26f48c5db4afa549376d383530119728.setContent(html_49c32f230b086b42a525364633aa1d2b);
+            
+        
+
+        circle_marker_a41557c4360cddbf8fac40aafaf9ae05.bindPopup(popup_26f48c5db4afa549376d383530119728)
+        ;
+
+        
+    
+    
+            circle_marker_a41557c4360cddbf8fac40aafaf9ae05.bindTooltip(
+                `<div>
+                     AI Site 2 (Conf: 0.796)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6d7f96f8027dce2aec8ee50207398aa9 = L.circle(
+                [-2.716216216216216, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.912567138671875, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_2e2c141bef69a273c08ca3a180103d16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69a9054fa9750f87f64f3a64286efa27 = $(`<div id="html_69a9054fa9750f87f64f3a64286efa27" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~31m)</div>`)[0];
+                popup_2e2c141bef69a273c08ca3a180103d16.setContent(html_69a9054fa9750f87f64f3a64286efa27);
+            
+        
+
+        circle_6d7f96f8027dce2aec8ee50207398aa9.bindPopup(popup_2e2c141bef69a273c08ca3a180103d16)
+        ;
+
+        
+    
+    
+            var circle_marker_4ba848259fe808eaf9dc1db586ab754a = L.circleMarker(
+                [-2.716216216216216, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.054522796990934, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_7b89530164539be47bb61efea287246b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_851cf4c4c10192d3714a9e2b144301d0 = $(`<div id="html_851cf4c4c10192d3714a9e2b144301d0" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 3</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.842</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.501</p>                     <p><strong>Rectangularity:</strong> 0.976</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_7b89530164539be47bb61efea287246b.setContent(html_851cf4c4c10192d3714a9e2b144301d0);
+            
+        
+
+        circle_marker_4ba848259fe808eaf9dc1db586ab754a.bindPopup(popup_7b89530164539be47bb61efea287246b)
+        ;
+
+        
+    
+    
+            circle_marker_4ba848259fe808eaf9dc1db586ab754a.bindTooltip(
+                `<div>
+                     AI Site 3 (Conf: 0.842)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e7db199b91f7914cd724442cf4eeeb79 = L.circle(
+                [-2.716216216216216, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.848409323303116, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_cfecaf649f6439e26205596bdd8e4779 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_421b9209b65793c3e4e3868fcb19ba9e = $(`<div id="html_421b9209b65793c3e4e3868fcb19ba9e" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_cfecaf649f6439e26205596bdd8e4779.setContent(html_421b9209b65793c3e4e3868fcb19ba9e);
+            
+        
+
+        circle_e7db199b91f7914cd724442cf4eeeb79.bindPopup(popup_cfecaf649f6439e26205596bdd8e4779)
+        ;
+
+        
+    
+    
+            var circle_marker_3270203fd4c72e8d6ee5b7307f2c585c = L.circleMarker(
+                [-2.6891891891891886, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.4298362476918, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_7e84598381bbd1f64662ebd03bdb1801 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_45aec50abbadc11025b472a19d58ba83 = $(`<div id="html_45aec50abbadc11025b472a19d58ba83" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 4</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.738</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.285</p>                     <p><strong>Rectangularity:</strong> 0.949</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.945946</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_7e84598381bbd1f64662ebd03bdb1801.setContent(html_45aec50abbadc11025b472a19d58ba83);
+            
+        
+
+        circle_marker_3270203fd4c72e8d6ee5b7307f2c585c.bindPopup(popup_7e84598381bbd1f64662ebd03bdb1801)
+        ;
+
+        
+    
+    
+            circle_marker_3270203fd4c72e8d6ee5b7307f2c585c.bindTooltip(
+                `<div>
+                     AI Site 4 (Conf: 0.738)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_aacc51d3d70d5cfe0bfd54d72b61e379 = L.circle(
+                [-2.6891891891891886, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 29.76612082563933, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_98aa842321f8d8e006aa60cfd050ce58 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4307023fade53db898bd504add5ebd2a = $(`<div id="html_4307023fade53db898bd504add5ebd2a" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_98aa842321f8d8e006aa60cfd050ce58.setContent(html_4307023fade53db898bd504add5ebd2a);
+            
+        
+
+        circle_aacc51d3d70d5cfe0bfd54d72b61e379.bindPopup(popup_98aa842321f8d8e006aa60cfd050ce58)
+        ;
+
+        
+    
+    
+            var circle_marker_0bc206e0d2f886b5c3ef7503934c5063 = L.circleMarker(
+                [-2.6891891891891886, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.573203857643525, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_d153ead7c7d0de2f952dad66d782be11 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cd865a616d1f8a8ad4cd89d9158d1cbe = $(`<div id="html_cd865a616d1f8a8ad4cd89d9158d1cbe" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 5</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.762</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.530</p>                     <p><strong>Rectangularity:</strong> 0.691</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_d153ead7c7d0de2f952dad66d782be11.setContent(html_cd865a616d1f8a8ad4cd89d9158d1cbe);
+            
+        
+
+        circle_marker_0bc206e0d2f886b5c3ef7503934c5063.bindPopup(popup_d153ead7c7d0de2f952dad66d782be11)
+        ;
+
+        
+    
+    
+            circle_marker_0bc206e0d2f886b5c3ef7503934c5063.bindTooltip(
+                `<div>
+                     AI Site 5 (Conf: 0.762)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_eedd971eeaeb074be59531dc6111c81f = L.circle(
+                [-2.6891891891891886, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.24401285881175, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_869a1e3210bfdb196d134b61c10c2e04 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9dacc6ac0f03276e7ae3e0aba2805061 = $(`<div id="html_9dacc6ac0f03276e7ae3e0aba2805061" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_869a1e3210bfdb196d134b61c10c2e04.setContent(html_9dacc6ac0f03276e7ae3e0aba2805061);
+            
+        
+
+        circle_eedd971eeaeb074be59531dc6111c81f.bindPopup(popup_869a1e3210bfdb196d134b61c10c2e04)
+        ;
+
+        
+    
+    
+            var circle_marker_067d39d69cefc541428d6fd0d6f326d7 = L.circleMarker(
+                [-2.6891891891891886, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.095919197957315, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_8e18af84bab82986d485145e8bde6dac = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0edd658fd5879e20591d6a9606633706 = $(`<div id="html_0edd658fd5879e20591d6a9606633706" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 6</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.849</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.446</p>                     <p><strong>Rectangularity:</strong> 0.848</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_8e18af84bab82986d485145e8bde6dac.setContent(html_0edd658fd5879e20591d6a9606633706);
+            
+        
+
+        circle_marker_067d39d69cefc541428d6fd0d6f326d7.bindPopup(popup_8e18af84bab82986d485145e8bde6dac)
+        ;
+
+        
+    
+    
+            circle_marker_067d39d69cefc541428d6fd0d6f326d7.bindTooltip(
+                `<div>
+                     AI Site 6 (Conf: 0.849)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_5615e2a0cb58dbb31e710cb217cb43f7 = L.circle(
+                [-2.6891891891891886, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.986397326524383, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_dbcf9d8fb65f754bfe74923b2f70a415 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3166d3cc8c31ae6df08f47e1cba53c53 = $(`<div id="html_3166d3cc8c31ae6df08f47e1cba53c53" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_dbcf9d8fb65f754bfe74923b2f70a415.setContent(html_3166d3cc8c31ae6df08f47e1cba53c53);
+            
+        
+
+        circle_5615e2a0cb58dbb31e710cb217cb43f7.bindPopup(popup_dbcf9d8fb65f754bfe74923b2f70a415)
+        ;
+
+        
+    
+    
+            var circle_marker_b2c49fdc9a285e6620d7ee82feb6aad3 = L.circleMarker(
+                [-2.6891891891891886, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.044607604323277, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_e17eb7bd9e7660f37163567fade5c2bd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_af685d9ab23a36600ac7b4ef966d27e8 = $(`<div id="html_af685d9ab23a36600ac7b4ef966d27e8" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 7</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.841</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.676</p>                     <p><strong>Rectangularity:</strong> 0.832</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_e17eb7bd9e7660f37163567fade5c2bd.setContent(html_af685d9ab23a36600ac7b4ef966d27e8);
+            
+        
+
+        circle_marker_b2c49fdc9a285e6620d7ee82feb6aad3.bindPopup(popup_e17eb7bd9e7660f37163567fade5c2bd)
+        ;
+
+        
+    
+    
+            circle_marker_b2c49fdc9a285e6620d7ee82feb6aad3.bindTooltip(
+                `<div>
+                     AI Site 7 (Conf: 0.841)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_d75e2b7159b238f3d29be16c5abc2d19 = L.circle(
+                [-2.6891891891891886, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.815358681077587, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_13e2f842fa64dd534a6b4e4f9ced3dbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe3ba27742d285a4334ce02bc4d03558 = $(`<div id="html_fe3ba27742d285a4334ce02bc4d03558" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_13e2f842fa64dd534a6b4e4f9ced3dbb.setContent(html_fe3ba27742d285a4334ce02bc4d03558);
+            
+        
+
+        circle_d75e2b7159b238f3d29be16c5abc2d19.bindPopup(popup_13e2f842fa64dd534a6b4e4f9ced3dbb)
+        ;
+
+        
+    
+    
+            var circle_marker_8150738568713671ff5248306f5589e0 = L.circleMarker(
+                [-2.6891891891891886, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.815497205626214, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_158e57511d9eafe7bf278b1cbcf49707 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f40915669b44b883953366fc5622058c = $(`<div id="html_f40915669b44b883953366fc5622058c" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 8</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.636</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.466</p>                     <p><strong>Rectangularity:</strong> 0.592</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.837838</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_158e57511d9eafe7bf278b1cbcf49707.setContent(html_f40915669b44b883953366fc5622058c);
+            
+        
+
+        circle_marker_8150738568713671ff5248306f5589e0.bindPopup(popup_158e57511d9eafe7bf278b1cbcf49707)
+        ;
+
+        
+    
+    
+            circle_marker_8150738568713671ff5248306f5589e0.bindTooltip(
+                `<div>
+                     AI Site 8 (Conf: 0.636)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f4f46086546e4f6c6e326ffaa93ab42f = L.circle(
+                [-2.6891891891891886, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.718324018754043, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_536006174d7487fe11724aee9aa432dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c804c6481d6ec51bc870b7ab7a860027 = $(`<div id="html_c804c6481d6ec51bc870b7ab7a860027" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~28m)</div>`)[0];
+                popup_536006174d7487fe11724aee9aa432dd.setContent(html_c804c6481d6ec51bc870b7ab7a860027);
+            
+        
+
+        circle_f4f46086546e4f6c6e326ffaa93ab42f.bindPopup(popup_536006174d7487fe11724aee9aa432dd)
+        ;
+
+        
+    
+    
+            var circle_marker_e6fa2ff4523717b7c34917c284fae78d = L.circleMarker(
+                [-2.6891891891891886, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.980093339609054, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_e7d11a31087be1bfdfc3f2b759615f7d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_816e536fae2ef636e7ea727df196bfa3 = $(`<div id="html_816e536fae2ef636e7ea727df196bfa3" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 9</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.830</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.656</p>                     <p><strong>Rectangularity:</strong> 0.948</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.810811</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_e7d11a31087be1bfdfc3f2b759615f7d.setContent(html_816e536fae2ef636e7ea727df196bfa3);
+            
+        
+
+        circle_marker_e6fa2ff4523717b7c34917c284fae78d.bindPopup(popup_e7d11a31087be1bfdfc3f2b759615f7d)
+        ;
+
+        
+    
+    
+            circle_marker_e6fa2ff4523717b7c34917c284fae78d.bindTooltip(
+                `<div>
+                     AI Site 9 (Conf: 0.830)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_d316f417b615e478e29a21e82ba69f7c = L.circle(
+                [-2.6891891891891886, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.60031113203018, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_8c4a773b112554b7fd607dea1e677a9e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15b41265deaeefc75109727b037cbe41 = $(`<div id="html_15b41265deaeefc75109727b037cbe41" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_8c4a773b112554b7fd607dea1e677a9e.setContent(html_15b41265deaeefc75109727b037cbe41);
+            
+        
+
+        circle_d316f417b615e478e29a21e82ba69f7c.bindPopup(popup_8c4a773b112554b7fd607dea1e677a9e)
+        ;
+
+        
+    
+    
+            var circle_marker_9357392f13abc7205341253f0d268aac = L.circleMarker(
+                [-2.6621621621621614, -54.972972972973004],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.646559345359446, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_c67aae4a9306f373423cadfb859bfde4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_85cccedc6b0ceae8145d49801bf08aa8 = $(`<div id="html_85cccedc6b0ceae8145d49801bf08aa8" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 10</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.774</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.483</p>                     <p><strong>Rectangularity:</strong> 0.917</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.972973</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_c67aae4a9306f373423cadfb859bfde4.setContent(html_85cccedc6b0ceae8145d49801bf08aa8);
+            
+        
+
+        circle_marker_9357392f13abc7205341253f0d268aac.bindPopup(popup_c67aae4a9306f373423cadfb859bfde4)
+        ;
+
+        
+    
+    
+            circle_marker_9357392f13abc7205341253f0d268aac.bindTooltip(
+                `<div>
+                     AI Site 10 (Conf: 0.774)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_c12116b2825a3d508d0b5daeb4b2958b = L.circle(
+                [-2.6621621621621614, -54.972972972973004],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.488531151198153, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_7d486beec03bc74222c80b1500759e7a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_213577f967dd502363f5b59c28bf4de4 = $(`<div id="html_213577f967dd502363f5b59c28bf4de4" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_7d486beec03bc74222c80b1500759e7a.setContent(html_213577f967dd502363f5b59c28bf4de4);
+            
+        
+
+        circle_c12116b2825a3d508d0b5daeb4b2958b.bindPopup(popup_7d486beec03bc74222c80b1500759e7a)
+        ;
+
+        
+    
+    
+            var circle_marker_f8dd04da1bcf95ba9a08d9419866d1bc = L.circleMarker(
+                [-2.6621621621621614, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.609967652921416, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_0caa6505d37892cbf0e4351945d34311 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_723c531744964223e6fede9e142bdcc0 = $(`<div id="html_723c531744964223e6fede9e142bdcc0" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 11</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.768</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.545</p>                     <p><strong>Rectangularity:</strong> 0.936</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.945946</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_0caa6505d37892cbf0e4351945d34311.setContent(html_723c531744964223e6fede9e142bdcc0);
+            
+        
+
+        circle_marker_f8dd04da1bcf95ba9a08d9419866d1bc.bindPopup(popup_0caa6505d37892cbf0e4351945d34311)
+        ;
+
+        
+    
+    
+            circle_marker_f8dd04da1bcf95ba9a08d9419866d1bc.bindTooltip(
+                `<div>
+                     AI Site 11 (Conf: 0.768)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b56e21d2330dc257de6397f330217d48 = L.circle(
+                [-2.6621621621621614, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.366558843071385, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_7c5cab5c20197a78874290cd31ec2a3e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_613a3c2a501a9fb5fa0150fb7cd807fc = $(`<div id="html_613a3c2a501a9fb5fa0150fb7cd807fc" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_7c5cab5c20197a78874290cd31ec2a3e.setContent(html_613a3c2a501a9fb5fa0150fb7cd807fc);
+            
+        
+
+        circle_b56e21d2330dc257de6397f330217d48.bindPopup(popup_7c5cab5c20197a78874290cd31ec2a3e)
+        ;
+
+        
+    
+    
+            var circle_marker_d240188881e13c6413ddc50e1d507528 = L.circleMarker(
+                [-2.6621621621621614, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.012129974365234, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_e8e75158a459bf497f60764d66bba4b7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0c90af9a84612ecf2b800df2b003234f = $(`<div id="html_0c90af9a84612ecf2b800df2b003234f" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 12</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.835</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.785</p>                     <p><strong>Rectangularity:</strong> 0.991</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_e8e75158a459bf497f60764d66bba4b7.setContent(html_0c90af9a84612ecf2b800df2b003234f);
+            
+        
+
+        circle_marker_d240188881e13c6413ddc50e1d507528.bindPopup(popup_e8e75158a459bf497f60764d66bba4b7)
+        ;
+
+        
+    
+    
+            circle_marker_d240188881e13c6413ddc50e1d507528.bindTooltip(
+                `<div>
+                     AI Site 12 (Conf: 0.835)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_940fe1d836138b3466ef47dd2195cfec = L.circle(
+                [-2.6621621621621614, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.70709991455078, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_cdcf809990705a8e2cbb7eb26d14894f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37487a6ee127a3a759384249aa720511 = $(`<div id="html_37487a6ee127a3a759384249aa720511" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_cdcf809990705a8e2cbb7eb26d14894f.setContent(html_37487a6ee127a3a759384249aa720511);
+            
+        
+
+        circle_940fe1d836138b3466ef47dd2195cfec.bindPopup(popup_cdcf809990705a8e2cbb7eb26d14894f)
+        ;
+
+        
+    
+    
+            var circle_marker_8153b10dea2617cd8a46c2c0a602d2ba = L.circleMarker(
+                [-2.6621621621621614, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.850394029575174, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_3ecf2e7365191a0b315965a5af06dd04 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7ab24e788dbd01d76c905b7da9eb8f38 = $(`<div id="html_7ab24e788dbd01d76c905b7da9eb8f38" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 13</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.808</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.694</p>                     <p><strong>Rectangularity:</strong> 0.820</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_3ecf2e7365191a0b315965a5af06dd04.setContent(html_7ab24e788dbd01d76c905b7da9eb8f38);
+            
+        
+
+        circle_marker_8153b10dea2617cd8a46c2c0a602d2ba.bindPopup(popup_3ecf2e7365191a0b315965a5af06dd04)
+        ;
+
+        
+    
+    
+            circle_marker_8153b10dea2617cd8a46c2c0a602d2ba.bindTooltip(
+                `<div>
+                     AI Site 13 (Conf: 0.808)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_88e730613775bf9f25e0a384412995c7 = L.circle(
+                [-2.6621621621621614, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.167980098583914, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_d60a1a801419c32d065d25523a060ab3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d379640943cf4e9d308aff2e9a6195a9 = $(`<div id="html_d379640943cf4e9d308aff2e9a6195a9" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~31m)</div>`)[0];
+                popup_d60a1a801419c32d065d25523a060ab3.setContent(html_d379640943cf4e9d308aff2e9a6195a9);
+            
+        
+
+        circle_88e730613775bf9f25e0a384412995c7.bindPopup(popup_d60a1a801419c32d065d25523a060ab3)
+        ;
+
+        
+    
+    
+            var circle_marker_c1c34f919564d3e1718aad1b5d78ac7e = L.circleMarker(
+                [-2.6621621621621614, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.075924457946737, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_3b58555af9a5efc48e9e231944ca8682 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b1a2d99c8c97bc3f5533c5660318466f = $(`<div id="html_b1a2d99c8c97bc3f5533c5660318466f" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 14</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.846</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.719</p>                     <p><strong>Rectangularity:</strong> 0.859</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_3b58555af9a5efc48e9e231944ca8682.setContent(html_b1a2d99c8c97bc3f5533c5660318466f);
+            
+        
+
+        circle_marker_c1c34f919564d3e1718aad1b5d78ac7e.bindPopup(popup_3b58555af9a5efc48e9e231944ca8682)
+        ;
+
+        
+    
+    
+            circle_marker_c1c34f919564d3e1718aad1b5d78ac7e.bindTooltip(
+                `<div>
+                     AI Site 14 (Conf: 0.846)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_344b8ea32dd617769b1d67eb96fc50e1 = L.circle(
+                [-2.6621621621621614, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.91974819315579, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_73cfe96f5b8282743390d119c9fa8d18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81c4eec4d9e57d99079f8cda1cacec9b = $(`<div id="html_81c4eec4d9e57d99079f8cda1cacec9b" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~32m)</div>`)[0];
+                popup_73cfe96f5b8282743390d119c9fa8d18.setContent(html_81c4eec4d9e57d99079f8cda1cacec9b);
+            
+        
+
+        circle_344b8ea32dd617769b1d67eb96fc50e1.bindPopup(popup_73cfe96f5b8282743390d119c9fa8d18)
+        ;
+
+        
+    
+    
+            var circle_marker_5721a877cfb4ec28438f6c5728eab26e = L.circleMarker(
+                [-2.6621621621621614, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.59106789731621, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_25dbd8460e609b08cac2bc60bb1fce25 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e82e29cf2beac6b220e3bfe855555392 = $(`<div id="html_e82e29cf2beac6b220e3bfe855555392" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 15</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.765</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.384</p>                     <p><strong>Rectangularity:</strong> 0.920</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.837838</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_25dbd8460e609b08cac2bc60bb1fce25.setContent(html_e82e29cf2beac6b220e3bfe855555392);
+            
+        
+
+        circle_marker_5721a877cfb4ec28438f6c5728eab26e.bindPopup(popup_25dbd8460e609b08cac2bc60bb1fce25)
+        ;
+
+        
+    
+    
+            circle_marker_5721a877cfb4ec28438f6c5728eab26e.bindTooltip(
+                `<div>
+                     AI Site 15 (Conf: 0.765)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_f4f6734033842d4a68fc6cec92bdd691 = L.circle(
+                [-2.6621621621621614, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.3035596577207, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_78c5464a0151d614e8e7c1729d195b7d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42645091604573a0446dcdfd1ed9fc2f = $(`<div id="html_42645091604573a0446dcdfd1ed9fc2f" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~30m)</div>`)[0];
+                popup_78c5464a0151d614e8e7c1729d195b7d.setContent(html_42645091604573a0446dcdfd1ed9fc2f);
+            
+        
+
+        circle_f4f6734033842d4a68fc6cec92bdd691.bindPopup(popup_78c5464a0151d614e8e7c1729d195b7d)
+        ;
+
+        
+    
+    
+            var circle_marker_5facaf548d7292710fa47a51905157de = L.circleMarker(
+                [-2.6621621621621614, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.002651670655228, "stroke": true, "weight": 2}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_4e6d0ba025cb5f58d8e5d73379fc5984 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_832daff126d038318d14f5a44a04b7a6 = $(`<div id="html_832daff126d038318d14f5a44a04b7a6" style="width: 100.0%; height: 100.0%;">             <div style="width: 350px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ AI-Validated Site 16</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="background-color: #e8f5e8; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin: 0; color: #2e7d32;">🤖 AI Analysis Results</h4>                     <p style="margin: 5px 0;"><strong>Confidence:</strong> <span style="color: #4caf50; font-weight: bold;">0.667</span></p>                     <p style="margin: 5px 0;"><strong>Models Used:</strong> sam, computer_vision</p>                 </div>                                  <div style="border-left: 4px solid #d62728; padding-left: 10px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📐 Shape Analysis</h4>                     <p><strong>Type:</strong> Rectangular (Structure/Terrace)</p>                     <p><strong>Circularity:</strong> 0.598</p>                     <p><strong>Rectangularity:</strong> 0.834</p>                 </div>                                  <div style="background-color: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0;">                     <h4 style="margin-top: 0;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.810811</p>                 </div>                                  <div style="background-color: #fff3e0; padding: 8px; border-radius: 5px; margin: 10px 0;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>AI Detection: YOLO + SAM + ViT</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_4e6d0ba025cb5f58d8e5d73379fc5984.setContent(html_832daff126d038318d14f5a44a04b7a6);
+            
+        
+
+        circle_marker_5facaf548d7292710fa47a51905157de.bindPopup(popup_4e6d0ba025cb5f58d8e5d73379fc5984)
+        ;
+
+        
+    
+    
+            circle_marker_5facaf548d7292710fa47a51905157de.bindTooltip(
+                `<div>
+                     AI Site 16 (Conf: 0.667)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_75952cec0333be4cb2be1de05179f7e9 = L.circle(
+                [-2.6621621621621614, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "#d62728", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d62728", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.342172235517424, "stroke": true, "weight": 1}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+        
+    
+        var popup_2c7308c4f0058f62a3a6400a86b17bf9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8cfa2dc2b06f6d9dc9502a573a1e2063 = $(`<div id="html_8cfa2dc2b06f6d9dc9502a573a1e2063" style="width: 100.0%; height: 100.0%;">Archaeological Feature Area (~28m)</div>`)[0];
+                popup_2c7308c4f0058f62a3a6400a86b17bf9.setContent(html_8cfa2dc2b06f6d9dc9502a573a1e2063);
+            
+        
+
+        circle_75952cec0333be4cb2be1de05179f7e9.bindPopup(popup_2c7308c4f0058f62a3a6400a86b17bf9)
+        ;
+
+        
+    
+    
+            var layer_control_9540d8b9793800974d6d9f23cebd712a_layers = {
+                base_layers : {
+                    "Street Map" : tile_layer_2856c86d0768ba6394e43aac819e8a03,
+                    "Clean Map (Recommended)" : tile_layer_da05873df0a2ce5736cc6db622e24573,
+                    "Dark Map" : tile_layer_38bde6e36ad265c2e0f024f140b94e3f,
+                    "Satellite View" : tile_layer_3504a4d4b1c15e28a5ae346c8ad6b675,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_9540d8b9793800974d6d9f23cebd712a = L.control.layers(
+                layer_control_9540d8b9793800974d6d9f23cebd712a_layers.base_layers,
+                layer_control_9540d8b9793800974d6d9f23cebd712a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c0fee251395f54a342ae15e354fed5ee);
+
+        
+    
+            var measure_control_f66bba6cd73c5a28de3859a99800d692 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_c0fee251395f54a342ae15e354fed5ee.addControl(measure_control_f66bba6cd73c5a28de3859a99800d692);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+</script>
+</html>

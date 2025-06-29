@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_66605364834df8d405254a15cb9d5171 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%); 
+                    background-color: rgba(255,255,255,0.95); border:2px solid grey; z-index:9999; 
+                    font-size:14px; padding: 15px; text-align: center; border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+        <h3 style="margin: 0;">🏛️ NeuroWing Archaeological Discovery Overview</h3>
+        <p style="margin: 5px 0;"><strong>16 Total Candidates | Session: 20250629_181554</strong></p>
+        <p style="font-size: 12px; margin: 0;">💡 If map doesn't load, try switching layers (top-right corner)</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_66605364834df8d405254a15cb9d5171" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_66605364834df8d405254a15cb9d5171 = L.map(
+                "map_66605364834df8d405254a15cb9d5171",
+                {
+                    center: [-2.6824324324324316, -54.886824324324365],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_df63487d8f120fdeb7060fddafbf2695 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_df63487d8f120fdeb7060fddafbf2695.addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+            var tile_layer_64f38d54e95b17e7604d45f0b6a1debe = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_64f38d54e95b17e7604d45f0b6a1debe.addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+            var tile_layer_a8b0199c87a010fba1fb1a351e679cd0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 CartoDB \u00a9 OpenStreetMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a8b0199c87a010fba1fb1a351e679cd0.addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+            var tile_layer_abc938c3cbfd85cf7bc3e6ecd9355822 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "Google Satellite",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_abc938c3cbfd85cf7bc3e6ecd9355822.addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+            var circle_marker_fa15d96934c4159bde4c2b55e2339509 = L.circleMarker(
+                [-2.716216216216216, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.135422038105396, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_164e728da225041977dfb4f98b9ac936 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c32f7bf03f5a0e799976cdc3d622508e = $(`<div id="html_c32f7bf03f5a0e799976cdc3d622508e" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 1</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.517</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.727</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_164e728da225041977dfb4f98b9ac936.setContent(html_c32f7bf03f5a0e799976cdc3d622508e);
+            
+        
+
+        circle_marker_fa15d96934c4159bde4c2b55e2339509.bindPopup(popup_164e728da225041977dfb4f98b9ac936)
+        ;
+
+        
+    
+    
+            circle_marker_fa15d96934c4159bde4c2b55e2339509.bindTooltip(
+                `<div>
+                     Candidate 1 (Walker: 0.517)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_94aea676a8cbb669791b700b81d15304 = L.circleMarker(
+                [-2.716216216216216, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.174625350437665, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_5da7bee46be19532a79eb302121bf0dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_497df2daffb4373699c1a03e8183bcf5 = $(`<div id="html_497df2daffb4373699c1a03e8183bcf5" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 2</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.522</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.796</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_5da7bee46be19532a79eb302121bf0dd.setContent(html_497df2daffb4373699c1a03e8183bcf5);
+            
+        
+
+        circle_marker_94aea676a8cbb669791b700b81d15304.bindPopup(popup_5da7bee46be19532a79eb302121bf0dd)
+        ;
+
+        
+    
+    
+            circle_marker_94aea676a8cbb669791b700b81d15304.bindTooltip(
+                `<div>
+                     Candidate 2 (Walker: 0.522)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ff5042650d18fd1e69b9fed74b15986 = L.circleMarker(
+                [-2.716216216216216, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.209981894909319, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_98f340f3de206050f3a70e15ea6ca5f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_94bd4f9d22477b2c6891bcfe29182bbc = $(`<div id="html_94bd4f9d22477b2c6891bcfe29182bbc" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 3</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.716216</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.526</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.842</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_98f340f3de206050f3a70e15ea6ca5f0.setContent(html_94bd4f9d22477b2c6891bcfe29182bbc);
+            
+        
+
+        circle_marker_4ff5042650d18fd1e69b9fed74b15986.bindPopup(popup_98f340f3de206050f3a70e15ea6ca5f0)
+        ;
+
+        
+    
+    
+            circle_marker_4ff5042650d18fd1e69b9fed74b15986.bindTooltip(
+                `<div>
+                     Candidate 3 (Walker: 0.526)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a165eb806a9c39b7620088216ea0318a = L.circleMarker(
+                [-2.6891891891891886, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.148662667553449, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_ce0509897b96eae0912dac2571826c4f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f7b7be059cd5479dfda4ff29387a74ea = $(`<div id="html_f7b7be059cd5479dfda4ff29387a74ea" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 4</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.945946</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.519</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.738</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_ce0509897b96eae0912dac2571826c4f.setContent(html_f7b7be059cd5479dfda4ff29387a74ea);
+            
+        
+
+        circle_marker_a165eb806a9c39b7620088216ea0318a.bindPopup(popup_ce0509897b96eae0912dac2571826c4f)
+        ;
+
+        
+    
+    
+            circle_marker_a165eb806a9c39b7620088216ea0318a.bindTooltip(
+                `<div>
+                     Candidate 4 (Walker: 0.519)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4615e927f3a02970b46ba8c4454a998e = L.circleMarker(
+                [-2.6891891891891886, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.19375034282019, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_1a11af184c52b46cdd5fa294109396fc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec54684689f32aa100ba17eff970b417 = $(`<div id="html_ec54684689f32aa100ba17eff970b417" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 5</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.524</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.762</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_1a11af184c52b46cdd5fa294109396fc.setContent(html_ec54684689f32aa100ba17eff970b417);
+            
+        
+
+        circle_marker_4615e927f3a02970b46ba8c4454a998e.bindPopup(popup_1a11af184c52b46cdd5fa294109396fc)
+        ;
+
+        
+    
+    
+            circle_marker_4615e927f3a02970b46ba8c4454a998e.bindTooltip(
+                `<div>
+                     Candidate 5 (Walker: 0.524)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_930cd7ebeb37db740a1d17b1f1fa312e = L.circleMarker(
+                [-2.6891891891891886, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.235423556432409, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_0850289fb1cb547761116c650a154976 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62763a4e52d7cb74ac4a2a0ee71cd84a = $(`<div id="html_62763a4e52d7cb74ac4a2a0ee71cd84a" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 6</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.529</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.849</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_0850289fb1cb547761116c650a154976.setContent(html_62763a4e52d7cb74ac4a2a0ee71cd84a);
+            
+        
+
+        circle_marker_930cd7ebeb37db740a1d17b1f1fa312e.bindPopup(popup_0850289fb1cb547761116c650a154976)
+        ;
+
+        
+    
+    
+            circle_marker_930cd7ebeb37db740a1d17b1f1fa312e.bindTooltip(
+                `<div>
+                     Candidate 6 (Walker: 0.529)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0bd69b3297fae26695fa92c644348661 = L.circleMarker(
+                [-2.6891891891891886, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.273200811908307, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_9d015dabdfce988b46a4a7a1823c9999 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3a4d9ad96332bab4f385b1848a581583 = $(`<div id="html_3a4d9ad96332bab4f385b1848a581583" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 7</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.534</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.841</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_9d015dabdfce988b46a4a7a1823c9999.setContent(html_3a4d9ad96332bab4f385b1848a581583);
+            
+        
+
+        circle_marker_0bd69b3297fae26695fa92c644348661.bindPopup(popup_9d015dabdfce988b46a4a7a1823c9999)
+        ;
+
+        
+    
+    
+            circle_marker_0bd69b3297fae26695fa92c644348661.bindTooltip(
+                `<div>
+                     Candidate 7 (Walker: 0.534)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_03f5b7a43f52418ae98920ffd651bb95 = L.circleMarker(
+                [-2.6891891891891886, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.306564589438617, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_e049eec45e40be8c8005e651a4088756 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5261f45005d8aa6377097f86a7afe297 = $(`<div id="html_5261f45005d8aa6377097f86a7afe297" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 8</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.837838</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.538</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.636</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_e049eec45e40be8c8005e651a4088756.setContent(html_5261f45005d8aa6377097f86a7afe297);
+            
+        
+
+        circle_marker_03f5b7a43f52418ae98920ffd651bb95.bindPopup(popup_e049eec45e40be8c8005e651a4088756)
+        ;
+
+        
+    
+    
+            circle_marker_03f5b7a43f52418ae98920ffd651bb95.bindTooltip(
+                `<div>
+                     Candidate 8 (Walker: 0.538)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29cf9ab6a4e08ea1dbf11b5b0d371bc9 = L.circleMarker(
+                [-2.6891891891891886, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.334979272987603, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_3a8b02f4dcb808bd5fe68d89de329b07 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c45256725c54f0d0402221ec6c1f9ae1 = $(`<div id="html_c45256725c54f0d0402221ec6c1f9ae1" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 9</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.689189</p>                     <p><strong>Longitude:</strong> -54.810811</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.542</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.830</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_3a8b02f4dcb808bd5fe68d89de329b07.setContent(html_c45256725c54f0d0402221ec6c1f9ae1);
+            
+        
+
+        circle_marker_29cf9ab6a4e08ea1dbf11b5b0d371bc9.bindPopup(popup_3a8b02f4dcb808bd5fe68d89de329b07)
+        ;
+
+        
+    
+    
+            circle_marker_29cf9ab6a4e08ea1dbf11b5b0d371bc9.bindTooltip(
+                `<div>
+                     Candidate 9 (Walker: 0.542)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_74282527ec71f4e58ca0fc320066db27 = L.circleMarker(
+                [-2.6621621621621614, -54.972972972973004],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.151742889933274, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_eb47bb3d792deaa980cd636a2262fe1c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a4e14c0f4e804a64650dfcf88c0d5cb3 = $(`<div id="html_a4e14c0f4e804a64650dfcf88c0d5cb3" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 10</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.972973</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.519</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.774</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_eb47bb3d792deaa980cd636a2262fe1c.setContent(html_a4e14c0f4e804a64650dfcf88c0d5cb3);
+            
+        
+
+        circle_marker_74282527ec71f4e58ca0fc320066db27.bindPopup(popup_eb47bb3d792deaa980cd636a2262fe1c)
+        ;
+
+        
+    
+    
+            circle_marker_74282527ec71f4e58ca0fc320066db27.bindTooltip(
+                `<div>
+                     Candidate 10 (Walker: 0.519)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3a031d040782ea218ba929b7e324e861 = L.circleMarker(
+                [-2.6621621621621614, -54.94594594594598],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.202372932713311, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_7e6b5585acb259d63c4d7c2e132d2e34 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72229ba346ce5cf37cec87dfe7985605 = $(`<div id="html_72229ba346ce5cf37cec87dfe7985605" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 11</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.945946</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.525</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.768</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_7e6b5585acb259d63c4d7c2e132d2e34.setContent(html_72229ba346ce5cf37cec87dfe7985605);
+            
+        
+
+        circle_marker_3a031d040782ea218ba929b7e324e861.bindPopup(popup_7e6b5585acb259d63c4d7c2e132d2e34)
+        ;
+
+        
+    
+    
+            circle_marker_3a031d040782ea218ba929b7e324e861.bindTooltip(
+                `<div>
+                     Candidate 11 (Walker: 0.525)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ea670d0a9b0cf0b5ce5de3fa66c9d098 = L.circleMarker(
+                [-2.6621621621621614, -54.918918918918955],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.250118249441115, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_0981d57fc1889564aea2b213ef8ee632 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d84dd8d72cca33429f524e02b94db21f = $(`<div id="html_d84dd8d72cca33429f524e02b94db21f" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 12</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.918919</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.531</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.835</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_0981d57fc1889564aea2b213ef8ee632.setContent(html_d84dd8d72cca33429f524e02b94db21f);
+            
+        
+
+        circle_marker_ea670d0a9b0cf0b5ce5de3fa66c9d098.bindPopup(popup_0981d57fc1889564aea2b213ef8ee632)
+        ;
+
+        
+    
+    
+            circle_marker_ea670d0a9b0cf0b5ce5de3fa66c9d098.bindTooltip(
+                `<div>
+                     Candidate 12 (Walker: 0.531)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6cf7c9efde3cc64ea53d4d4001feeefa = L.circleMarker(
+                [-2.6621621621621614, -54.89189189189193],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.294501299827612, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_03f8516ad3b845f107f1d3aca859b562 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d51aaac931ef5d226368f864b18ad345 = $(`<div id="html_d51aaac931ef5d226368f864b18ad345" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 13</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.891892</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.537</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.808</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_03f8516ad3b845f107f1d3aca859b562.setContent(html_d51aaac931ef5d226368f864b18ad345);
+            
+        
+
+        circle_marker_6cf7c9efde3cc64ea53d4d4001feeefa.bindPopup(popup_03f8516ad3b845f107f1d3aca859b562)
+        ;
+
+        
+    
+    
+            circle_marker_6cf7c9efde3cc64ea53d4d4001feeefa.bindTooltip(
+                `<div>
+                     Candidate 13 (Walker: 0.537)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_10ecd03ba31616caefc12c398133e877 = L.circleMarker(
+                [-2.6621621621621614, -54.864864864864906],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.334979272987589, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_ae1506d580805ce9adb4e5c01ee9ceea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e786609179e994bbe6a7789b5338422 = $(`<div id="html_8e786609179e994bbe6a7789b5338422" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 14</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.864865</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.542</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.846</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_ae1506d580805ce9adb4e5c01ee9ceea.setContent(html_8e786609179e994bbe6a7789b5338422);
+            
+        
+
+        circle_marker_10ecd03ba31616caefc12c398133e877.bindPopup(popup_ae1506d580805ce9adb4e5c01ee9ceea)
+        ;
+
+        
+    
+    
+            circle_marker_10ecd03ba31616caefc12c398133e877.bindTooltip(
+                `<div>
+                     Candidate 14 (Walker: 0.542)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b845d7761599a1ab8bb3634cc6470553 = L.circleMarker(
+                [-2.6621621621621614, -54.83783783783788],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.370950952094816, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_6388607d2e2c0aeb7b363143f61171ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7bfa78278f6b025e39c97c8ad6d0701b = $(`<div id="html_7bfa78278f6b025e39c97c8ad6d0701b" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 15</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.837838</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.546</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.765</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_6388607d2e2c0aeb7b363143f61171ed.setContent(html_7bfa78278f6b025e39c97c8ad6d0701b);
+            
+        
+
+        circle_marker_b845d7761599a1ab8bb3634cc6470553.bindPopup(popup_6388607d2e2c0aeb7b363143f61171ed)
+        ;
+
+        
+    
+    
+            circle_marker_b845d7761599a1ab8bb3634cc6470553.bindTooltip(
+                `<div>
+                     Candidate 15 (Walker: 0.546)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9bd04da4e1492d6f211e070d19744bf4 = L.circleMarker(
+                [-2.6621621621621614, -54.81081081081086],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ca02c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.401774703666472, "stroke": true, "weight": 2}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+        
+    
+        var popup_9af70b5d5404a540e649e1d5bf985d8a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33566ea15da1cade7f6ea3e7230a6278 = $(`<div id="html_33566ea15da1cade7f6ea3e7230a6278" style="width: 100.0%; height: 100.0%;">             <div style="width: 300px; font-family: Arial, sans-serif;">                 <h3 style="color: #d4af37; margin-bottom: 10px;">🏛️ Archaeological Candidate 16</h3>                 <hr style="border: 1px solid #ddd;">                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">📍 Location Details</h4>                     <p><strong>Latitude:</strong> -2.662162</p>                     <p><strong>Longitude:</strong> -54.810811</p>                 </div>                                  <div style="margin: 10px 0;">                     <h4 style="color: #1976d2;">🎯 Analysis Results</h4>                     <p><strong>Walker Probability:</strong> <span style="color: #2ca02c; font-weight: bold;">0.550</span></p>                     <p><strong>Confidence Level:</strong> high</p>                     <p><strong>AI Confidence:</strong> 0.667</p>                     <p><strong>Has AI Shape:</strong> ✅ Yes</p>                 </div>                                  <div style="background-color: #f0f8ff; padding: 8px; border-radius: 5px; margin-top: 10px;">                     <p style="margin: 0; font-size: 12px; text-align: center;">                         <strong>NeuroWing Discovery | Session: 20250629_181554</strong>                     </p>                 </div>             </div>             </div>`)[0];
+                popup_9af70b5d5404a540e649e1d5bf985d8a.setContent(html_33566ea15da1cade7f6ea3e7230a6278);
+            
+        
+
+        circle_marker_9bd04da4e1492d6f211e070d19744bf4.bindPopup(popup_9af70b5d5404a540e649e1d5bf985d8a)
+        ;
+
+        
+    
+    
+            circle_marker_9bd04da4e1492d6f211e070d19744bf4.bindTooltip(
+                `<div>
+                     Candidate 16 (Walker: 0.550)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_1079f59e65c08f1726add0a1bfb4a1d1_layers = {
+                base_layers : {
+                    "Street Map" : tile_layer_df63487d8f120fdeb7060fddafbf2695,
+                    "Clean Map (Recommended)" : tile_layer_64f38d54e95b17e7604d45f0b6a1debe,
+                    "Dark Map" : tile_layer_a8b0199c87a010fba1fb1a351e679cd0,
+                    "Satellite View" : tile_layer_abc938c3cbfd85cf7bc3e6ecd9355822,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_1079f59e65c08f1726add0a1bfb4a1d1 = L.control.layers(
+                layer_control_1079f59e65c08f1726add0a1bfb4a1d1_layers.base_layers,
+                layer_control_1079f59e65c08f1726add0a1bfb4a1d1_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_66605364834df8d405254a15cb9d5171);
+
+        
+</script>
+</html>
