@@ -1,0 +1,65 @@
+name: neurowing
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Core Python
+  - python=3.9
+  - pip
+  
+  # Scientific Computing
+  - numpy>=1.21.0
+  - pandas>=1.5.0
+  - scipy>=1.9.0
+  - scikit-learn>=1.1.0
+  
+  # Geospatial Core
+  - rasterio>=1.3.0
+  - fiona>=1.8.0
+  - shapely>=1.8.0
+  - pyproj>=3.4.0
+  - geopandas>=0.12.0
+  
+  # Earth Engine & Remote Sensing
+  - earthengine-api>=0.1.350
+  - geemap>=0.20.0
+  
+  # Machine Learning & AI
+  - xgboost>=1.7.0
+  - lightgbm>=3.3.0
+  - pytorch>=1.12.0
+  - torchvision>=0.13.0
+  - ultralytics>=8.0.0  # YOLOv8
+  
+  # Visualization
+  - folium>=0.14.0
+  - matplotlib>=3.6.0
+  - seaborn>=0.12.0
+  - plotly>=5.15.0
+  
+  # Jupyter Environment
+  - jupyter
+  - jupyterlab
+  - ipywidgets
+  - notebook
+  
+  # Performance & Utilities
+  - lz4>=4.0.0
+  - joblib>=1.2.0
+  - tqdm>=4.64.0
+  - requests>=2.28.0
+  
+  # Development
+  - pytest>=7.0.0
+  - black
+  - flake8
+  
+  # Pip Dependencies (not available via conda)
+  - pip:
+    - segment-anything-py==1.0.0
+    - transformers>=4.25.0
+    - opencv-python>=4.8.0
+    - pillow>=9.5.0
+    - rasterstats>=0.18.0
+    - laspy>=2.3.0
+    - opentopography>=0.1.0
